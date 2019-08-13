@@ -49,4 +49,13 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // Note that this also disables power saving and remote wakeup from keyboard completely.
 //#define NO_USB_SUSPEND_LOOP
 
+
+// hhkb中的设置
+/* period of tapping(ms) */
+#define TAPPING_TERM  270
+/* tap count needed for toggling a feature */
+// #define TAPPING_TOGGLE  5
+// /* Oneshot timeout(ms) */
+// #define ONESHOT_TIMEOUT 300
+
 #endif
