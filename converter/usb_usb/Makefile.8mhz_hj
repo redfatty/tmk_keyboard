@@ -1,4 +1,4 @@
-TARGET = usb_usb_8mhz_hj
+TARGET = usb_usb_unimap_8mhz_hj
 F_CPU = 8000000
 F_USB = 8000000
 UNIMAP_ENABLE = yes
