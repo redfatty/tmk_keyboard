@@ -29,7 +29,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define AC_FN0 ACTION_LAYER_MOMENTARY(1)
 
 /*
- 激活指定层, 关闭其它层(不包括默认层)
+ 激活指定层,并关闭其它层(不包括默认层)
 */
 #define AC_LAY0 ACTION_LAYER_SET(0, ON_RELEASE)
 #define AC_LAY1 ACTION_LAYER_SET(1, ON_RELEASE)
@@ -52,7 +52,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define AC_L7M ACTION_LAYER_MOMENTARY(7)
 
 /*
- 按住时临时激活指定层, 保留点击功能
+ 按住时临时激活指定层, 松开失效, 但保留点击功能
 */
 #define AC_L1_A ACTION_LAYER_TAP_KEY(1, KC_A)
 #define AC_L2_S ACTION_LAYER_TAP_KEY(2, KC_S)
@@ -63,8 +63,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 /*
  组合键
 */
-#define AC_ALTL ACTION_MODS_KEY(MOD_LALT, KC_LEFT)
-#define AC_ALTR ACTION_MODS_KEY(MOD_LALT, KC_RIGHT)
+#define AC_ALTL ACTION_MODS_KEY(MOD_LALT, KC_LEFT)  //后退
+#define AC_ALTR ACTION_MODS_KEY(MOD_LALT, KC_RIGHT) //前进
+#define AC_ALTU ACTION_MODS_KEY(MOD_LALT, KC_UP)    //页首  
+#define AC_ALTD ACTION_MODS_KEY(MOD_LALT, KC_DOWN)  //页尾
+    
 
 #ifdef KEYMAP_SECTION_ENABLE
 const action_t actionmaps[][UNIMAP_ROWS][UNIMAP_COLS] __attribute__ ((section (".keymap.keymaps"))) = {
@@ -83,54 +86,65 @@ const action_t actionmaps[][UNIMAP_ROWS][UNIMAP_COLS] PROGMEM = {
 /*7*/ LALT,LGUI,LCTL,MHEN,          SPC,           HENK,KANA,RALT,RGUI,APP, RCTL,     LEFT,DOWN,RGHT,    P0,       PDOT,PEQL
     ),
 
-// 第1层
+// 第1层(按A临时切换)方向,删除等功能键
     UNIMAP(
 //    1    2    3    4    5    6    7    8    9    10   11   12   13   14   15        16   17   18       19   20   21   22
 /*1*/           TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,
 /*2*/ TRNS,     TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,          TRNS,TRNS,TRNS,         TRNS,TRNS,TRNS,
 /*3*/ TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,     TRNS,TRNS,TRNS,    TRNS,TRNS,TRNS,TRNS,
-//                        R    T              I    O    P
-/*4*/ TRNS,TRNS,TRNS,TRNS,ALTL,ALTR,TRNS,TRNS,UP,  PGUP,PGDN,TRNS,TRNS,     TRNS,     TRNS,TRNS,TRNS,    TRNS,TRNS,TRNS,TRNS,
-//                   D    F         H    J    K    L    ;    '
-/*5*/ TRNS,TRNS,TRNS,LSFT,LALT,TRNS,ESC, LEFT,DOWN,RGHT,HOME,END,      TRNS,TRNS,                        TRNS,TRNS,TRNS,TRNS,
-//                                       N    M         .    /
-/*6*/ TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,BSPC,DEL, TRNS,WH_U,WH_D,     TRNS,TRNS,          TRNS,         TRNS,TRNS,TRNS,TRNS,
+//                        R    T                   O    P
+/*4*/ TRNS,TRNS,TRNS,TRNS,ALTL,ALTR,TRNS,TRNS,TRNS,PGUP,PGDN,TRNS,TRNS,     TRNS,     TRNS,TRNS,TRNS,    TRNS,TRNS,TRNS,TRNS,
+//                   D    F    G    H    J    K    L    ;    '
+/*5*/ TRNS,TRNS,TRNS,LSFT,LALT,ESC ,LEFT,DOWN,UP  ,RGHT,HOME,END,      TRNS,TRNS,                        TRNS,TRNS,TRNS,TRNS,
+//                             V    B    N    M         .    /
+/*6*/ TRNS,TRNS,TRNS,TRNS,TRNS,ALTU,ALTD,BSPC,DEL, TRNS,WH_U,WH_D,     TRNS,TRNS,          TRNS,         TRNS,TRNS,TRNS,TRNS,
 //                        /*        SpaceBar     */          
 /*7*/ TRNS,TRNS,LCTL,TRNS,          ENT,           TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,     TRNS,TRNS,TRNS,    TRNS,     TRNS,TRNS
     ),
 
-// 第2层
+// 第2层(按S临时切换)数字,符号等
     UNIMAP(
 //    1    2    3    4    5    6    7    8    9    10   11   12   13   14   15        16   17   18       19   20   21   22
 /*1*/           TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,
 /*2*/ TRNS,     TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,          TRNS,TRNS,TRNS,         TRNS,TRNS,TRNS,
 /*3*/ TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,     TRNS,TRNS,TRNS,    TRNS,TRNS,TRNS,TRNS,
+//                                       U    I    O    P
 /*4*/ TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,7,   8,   9,   0,   TRNS,TRNS,     TRNS,     TRNS,TRNS,TRNS,    TRNS,TRNS,TRNS,TRNS,
-/*5*/ TRNS,TRNS,TRNS,LSFT,LALT,TRNS,ESC, 4,   5,   6,   MINS,EQL,      TRNS,TRNS,                        TRNS,TRNS,TRNS,TRNS,
-/*6*/ TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,BSPC,1,   2,   3,   TRNS,     TRNS,TRNS,          TRNS,         TRNS,TRNS,TRNS,TRNS,
+//                   D    F    G         J    K    L    ;    '
+/*5*/ TRNS,TRNS,TRNS,LSFT,LALT,ESC ,TRNS,4,   5,   6,   MINS,EQL,      TRNS,TRNS,                        TRNS,TRNS,TRNS,TRNS,
+//                                       N    M    ,    .    /
+/*6*/ TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,BSPC,1,   2,   3,   GRV ,     TRNS,TRNS,          TRNS,         TRNS,TRNS,TRNS,TRNS,
 /*7*/ TRNS,TRNS,TRNS,TRNS,          TRNS,          TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,     TRNS,TRNS,TRNS,    TRNS,     TRNS,TRNS
     ),
 
-// 第3层
+// 第3层(按D临时切换)光标移动
     UNIMAP(
 //    1    2    3    4    5    6    7    8    9    10   11   12   13   14   15        16   17   18       19   20   21   22
 /*1*/           TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,
 /*2*/ TRNS,     TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,          TRNS,TRNS,TRNS,         TRNS,TRNS,TRNS,
 /*3*/ TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,     TRNS,TRNS,TRNS,    TRNS,TRNS,TRNS,TRNS,
-/*4*/ TRNS,TRNS,TRNS,TRNS,ALTL,ALTR,TRNS,TRNS,MS_U,TRNS,TRNS,TRNS,TRNS,     TRNS,     TRNS,TRNS,TRNS,    TRNS,TRNS,TRNS,TRNS,
-/*5*/ TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,ESC, MS_L,MS_D,MS_R,BTN1,BTN2,     TRNS,TRNS,                        TRNS,TRNS,TRNS,TRNS,
+//                        R    T
+/*4*/ TRNS,TRNS,TRNS,TRNS,ALTL,ALTR,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,     TRNS,     TRNS,TRNS,TRNS,    TRNS,TRNS,TRNS,TRNS,
+//                             G    H    J    K    L    ;    '
+/*5*/ TRNS,TRNS,TRNS,TRNS,TRNS,ESC ,MS_L,MS_D,MS_U,MS_R,BTN1,BTN2,     TRNS,TRNS,                        TRNS,TRNS,TRNS,TRNS,
+//
 /*6*/ TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,     TRNS,TRNS,          TRNS,         TRNS,TRNS,TRNS,TRNS,
+//                        /*        SpaceBar     */
 /*7*/ TRNS,TRNS,TRNS,TRNS,          ENT,           TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,     TRNS,TRNS,TRNS,    TRNS,     TRNS,TRNS
     ),
 
-// 第4层
+// 第4层(按F临时切换) F键,常用媒体键
     UNIMAP(
 //    1    2    3    4    5    6    7    8    9    10   11   12   13   14   15        16   17   18       19   20   21   22
 /*1*/           TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,
 /*2*/ TRNS,     TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,          TRNS,TRNS,TRNS,         TRNS,TRNS,TRNS,
-/*3*/ TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,     TRNS,TRNS,TRNS,    TRNS,TRNS,TRNS,TRNS,
+//                                                           -    =
+/*3*/ TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,VOLD,VOLU,TRNS,TRNS,     TRNS,TRNS,TRNS,    TRNS,TRNS,TRNS,TRNS,
+//                                       U    I    O    P
 /*4*/ TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,F7,  F8,  F9,  F10, TRNS,TRNS,     TRNS,     TRNS,TRNS,TRNS,    TRNS,TRNS,TRNS,TRNS,
-/*5*/ TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,ESC, F4,  F5,  F6,  F11, TRNS,     TRNS,TRNS,                        TRNS,TRNS,TRNS,TRNS,
+//                                       J    K    L    ;
+/*5*/ TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,F4,  F5,  F6,  F11, TRNS,     TRNS,TRNS,                        TRNS,TRNS,TRNS,TRNS,
+//                                            M    ,    .    /
 /*6*/ TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,F1,  F2,  F3,  F12,      TRNS,TRNS,          TRNS,         TRNS,TRNS,TRNS,TRNS,
 /*7*/ TRNS,TRNS,TRNS,TRNS,          ENT,           TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,     TRNS,TRNS,TRNS,    TRNS,     TRNS,TRNS
     ),
