@@ -65,8 +65,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 #define AC_ALTL ACTION_MODS_KEY(MOD_LALT, KC_LEFT)  //后退
 #define AC_ALTR ACTION_MODS_KEY(MOD_LALT, KC_RIGHT) //前进
-#define AC_ALTU ACTION_MODS_KEY(MOD_LALT, KC_UP)    //页首  
-#define AC_ALTD ACTION_MODS_KEY(MOD_LALT, KC_DOWN)  //页尾
+
+#define AC_CTLH ACTION_MODS_KEY(MOD_LCTL, KC_HOME) //页首  
+#define AC_CTLE ACTION_MODS_KEY(MOD_LCTL, KC_END)  //页尾
     
 
 #ifdef KEYMAP_SECTION_ENABLE
@@ -97,7 +98,7 @@ const action_t actionmaps[][UNIMAP_ROWS][UNIMAP_COLS] PROGMEM = {
 //                   D    F    G    H    J    K    L    ;    '
 /*5*/ TRNS,TRNS,TRNS,LSFT,LALT,ESC ,LEFT,DOWN,UP  ,RGHT,HOME,END,      TRNS,TRNS,                        TRNS,TRNS,TRNS,TRNS,
 //                             V    B    N    M         .    /
-/*6*/ TRNS,TRNS,TRNS,TRNS,TRNS,ALTU,ALTD,BSPC,DEL, TRNS,WH_U,WH_D,     TRNS,TRNS,          TRNS,         TRNS,TRNS,TRNS,TRNS,
+/*6*/ TRNS,TRNS,TRNS,TRNS,TRNS,CTLH,CTLE,BSPC,DEL, TRNS,WH_U,WH_D,     TRNS,TRNS,          TRNS,         TRNS,TRNS,TRNS,TRNS,
 //                        /*        SpaceBar     */          
 /*7*/ TRNS,TRNS,LCTL,TRNS,          ENT,           TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,     TRNS,TRNS,TRNS,    TRNS,     TRNS,TRNS
     ),
