@@ -60,6 +60,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define AC_L4_F ACTION_LAYER_TAP_KEY(4, KC_F)
 #define AC_L7_ ACTION_LAYER_TAP_KEY(7, KC_BSLS)
 
+#define AC_S_U ACTION_MODS_TAP_KEY(MOD_RSFT, KC_UP)
+#define AC_A_L ACTION_MODS_TAP_KEY(MOD_RALT, KC_LEFT)
+#define AC_W_D ACTION_MODS_TAP_KEY(MOD_RGUI, KC_DOWN)
+#define AC_C_R ACTION_MODS_TAP_KEY(MOD_RCTL, KC_LEFT)
+
 /*
  组合键
 */
@@ -83,8 +88,8 @@ const action_t actionmaps[][UNIMAP_ROWS][UNIMAP_COLS] PROGMEM = {
 /*3*/ GRV, 1,   2,   3,   4,   5,   6,   7,   8,   9,   0,   MINS,EQL, JYEN,BSPC,     INS, HOME,PGUP,    NLCK,PSLS,PAST,PMNS,
 /*4*/ TAB, Q,   W,   E,   R,   T,   Y,   U,   I,   O,   P,   LBRC,RBRC,     L7_,      DEL, END, PGDN,    P7,  P8,  P9,  PPLS,
 /*5*/ CAPS,L1_A,L2_S,L3_D,L4_F,G,   H,   J,   K,   L,   SCLN,QUOT,     NUHS,ENT,                         P4,  P5,  P6,  PCMM,
-/*6*/ LSFT,NUBS,Z,   X,   C,   V,   B,   N,   M,   COMM,DOT, SLSH,     RO,  RSFT,          UP,           P1,  P2,  P3,  PENT,
-/*7*/ LALT,LGUI,LCTL,MHEN,          SPC,           HENK,KANA,RALT,RGUI,APP, RCTL,     LEFT,DOWN,RGHT,    P0,       PDOT,PEQL
+/*6*/ LSFT,NUBS,Z,   X,   C,   V,   B,   N,   M,   COMM,DOT, SLSH,     RO,   S_U,          UP,           P1,  P2,  P3,  PENT,
+/*7*/ LALT,LGUI,LCTL,MHEN,          SPC,           HENK,KANA, A_L, W_D,APP,  C_R,     LEFT,DOWN,RGHT,    P0,       PDOT,PEQL
     ),
 
 // 第1层(按A临时切换)方向,删除等功能键
